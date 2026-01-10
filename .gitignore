@@ -1,0 +1,21 @@
+# Rails
+todo-api/log/*
+todo-api/tmp/*
+todo-api/storage/*
+todo-api/.bundle
+todo-api/config/master.key
+todo-api/config/credentials/*.key
+
+# React
+todo-frontend/node_modules/
+todo-frontend/dist/
+todo-frontend/.env.local
+todo-frontend/.env.*.local
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
