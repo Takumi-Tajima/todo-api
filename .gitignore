@@ -1,16 +1,16 @@
 # Rails
-todo-api/log/*
-todo-api/tmp/*
-todo-api/storage/*
-todo-api/.bundle
-todo-api/config/master.key
-todo-api/config/credentials/*.key
+backend/log/*
+backend/tmp/*
+backend/storage/*
+backend/.bundle
+backend/config/master.key
+backend/config/credentials/*.key
 
 # React
-todo-frontend/node_modules/
-todo-frontend/dist/
-todo-frontend/.env.local
-todo-frontend/.env.*.local
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
 
 # Editor
 .vscode/
