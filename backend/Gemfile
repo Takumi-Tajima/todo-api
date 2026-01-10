@@ -6,7 +6,12 @@ gem 'bootsnap', require: false
 gem 'image_processing'
 gem 'pg'
 gem 'puma'
+gem 'rack-cors'
+gem 'jsonapi-serializer'
 
 group :development, :test do
   gem 'sgcop', github: 'SonicGarden/sgcop', branch: 'main'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
