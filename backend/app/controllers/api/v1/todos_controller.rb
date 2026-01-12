@@ -3,11 +3,13 @@ class Api::V1::TodosController < ApplicationController
 
   def index
     @todos = Todo.all
-    render json: @todos
+    # render json: @todos
+    render json: TodoSerializer.new(@todos)
   end
 
   def show
-    render json: @todo
+    # render json: @todo
+    render json: TodoSerializer.new(@todo)
   end
 
   def create
@@ -40,6 +42,6 @@ class Api::V1::TodosController < ApplicationController
   end
 
   def todo_params
-    params.expect(todo: [:title, :description, :completed])
+    params.expect(todo: %i[content completed])
   end
 end
