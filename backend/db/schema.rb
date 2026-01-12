@@ -22,6 +22,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_11_091544) do
     t.integer "priority", default: 0, null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
   end
 end

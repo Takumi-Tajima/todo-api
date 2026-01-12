@@ -6,7 +6,6 @@ class CreateTodos < ActiveRecord::Migration[8.1]
       t.boolean :completed, null: false, default: false
       t.integer :priority, null: false, default: 0
       t.date :due_date, null: false
-      t.bigint :user_id
 
       t.timestamps
     end
