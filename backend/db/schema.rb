@@ -16,11 +16,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_11_091544) do
 
   create_table "todos", force: :cascade do |t|
     t.boolean "completed", default: false, null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
-    t.text "description", null: false
-    t.date "due_date", null: false
-    t.integer "priority", default: 0, null: false
-    t.string "title", null: false
     t.datetime "updated_at", null: false
   end
 end
