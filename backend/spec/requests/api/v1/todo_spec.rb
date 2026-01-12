@@ -27,24 +27,30 @@ RSpec.describe 'Api::V1::Todos', type: :request do
 
   describe 'POST /api/v1/todos' do
     it 'TODOを作成する' do
-      post '/api/v1/todos', params: { todo: { content: '新しいTODO' } }
-      expect(response).to have_http_status(:created)
+      expect do
+        post '/api/v1/todos', params: { todo: { content: '新しいTODO' } }
+        expect(response).to have_http_status(:created)
+      end.to change(Todo, :count).by(1)
     end
   end
 
   describe 'PUT /api/v1/todos/:id' do
-    let(:todo) { create(:todo, content: '古いTODO') }
+    let!(:todo) { create(:todo, content: '古いTODO') }
     it 'TODOを更新する' do
-      put "/api/v1/todos/#{todo.id}", params: { todo: { content: '更新されたTODO' } }
-      expect(response).to have_http_status(:success)
+      expect do
+        put "/api/v1/todos/#{todo.id}", params: { todo: { content: '更新されたTODO' } }
+        expect(response).to have_http_status(:success)
+      end.not_to change(Todo, :count)
     end
   end
 
   describe 'DELETE /api/v1/todos/:id' do
-    let(:todo) { create(:todo, content: '削除するTODO') }
+    let!(:todo) { create(:todo, content: '削除するTODO') }
     it 'TODOを削除する' do
-      delete "/api/v1/todos/#{todo.id}"
-      expect(response).to have_http_status(:no_content)
+      expect do
+        delete "/api/v1/todos/#{todo.id}"
+        expect(response).to have_http_status(:no_content)
+      end.to change(Todo, :count).by(-1)
     end
   end
 end
