@@ -3,12 +3,10 @@ class Api::V1::TodosController < ApplicationController
 
   def index
     @todos = Todo.default_order
-    # render json: @todos
     render json: TodoSerializer.new(@todos)
   end
 
   def show
-    # render json: @todo
     render json: TodoSerializer.new(@todo)
   end
 
@@ -16,7 +14,7 @@ class Api::V1::TodosController < ApplicationController
     @todo = Todo.new(todo_params)
 
     if @todo.save
-      render json: @todo, status: :created
+      render json: TodoSerializer.new(@todo), status: :created
     else
       render json: @todo.errors, status: :unprocessable_entity
     end

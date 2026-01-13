@@ -11,13 +11,18 @@ function App() {
   const changeNewTodoContent = (e: React.ChangeEvent<HTMLInputElement>) => setNewTodoContent(e.target.value)
   const handleNewTodoSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    
+    if (!newTodoContent) return
+
     fetch('http://localhost:3000/api/v1/todos', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ todo: { content: newTodoContent }})
     })
-    .then(() => {
-      console.log('Todo作られてるで')
+    .then(response => response.json())
+    .then(data => {
+      setTodos([...todos, data.data])
+      setNewTodoContent('')
     })
   }
 
