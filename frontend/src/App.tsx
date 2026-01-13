@@ -11,7 +11,14 @@ function App() {
   const changeNewTodoContent = (e: React.ChangeEvent<HTMLInputElement>) => setNewTodoContent(e.target.value)
   const handleNewTodoSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('新しいTodoの内容:', newTodoContent)
+    fetch('http://localhost:3000/api/v1/todos', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ todo: { content: newTodoContent }})
+    })
+    .then(() => {
+      console.log('Todo作られてるで')
+    })
   }
 
   useEffect(() => {
