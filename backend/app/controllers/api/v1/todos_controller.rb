@@ -42,6 +42,6 @@ class Api::V1::TodosController < ApplicationController
   end
 
   def todo_params
-    params.expect(todo: %i[content completed])
+    params.expect(todo: %i[content])
   end
 end
