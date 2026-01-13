@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react'
+import type { Todo } from './typs/Todo'
+import TodoList from './components/TodoList'
 import './App.css'
-
-type Todo = {
-  id: string
-  type: string
-  attributes: {
-    content: string
-    completed: boolean
-  }
-}
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
@@ -32,13 +25,8 @@ function App() {
     <div>
       <h1>Todo List</h1>
       <p>取得件数: {todos.length}</p>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            {todo.attributes.content} - {todo.attributes.completed ? '完了' : '未完了'}
-          </li>
-        ))}
-      </ul>
+      <TodoList todos={todos} />
+      {/* TODOを追加するフォーム */}
       <form onSubmit={handleNewTodoSubmit}>
         <input type="text" value={newTodoContent} onChange={changeNewTodoContent} />
         <button type="submit">追加</button>

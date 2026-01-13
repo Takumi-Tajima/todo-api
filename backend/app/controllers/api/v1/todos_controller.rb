@@ -2,7 +2,7 @@ class Api::V1::TodosController < ApplicationController
   before_action :set_todo, only: %i[show update destroy]
 
   def index
-    @todos = Todo.all
+    @todos = Todo.default_order
     # render json: @todos
     render json: TodoSerializer.new(@todos)
   end
