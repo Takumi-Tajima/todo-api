@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Todo } from './typs/Todo'
 import TodoList from './components/TodoList'
+import TodoForm from './components/TodoForm'
 import './App.css'
 
 function App() {
@@ -26,11 +27,11 @@ function App() {
       <h1>Todo List</h1>
       <p>取得件数: {todos.length}</p>
       <TodoList todos={todos} />
-      {/* TODOを追加するフォーム */}
-      <form onSubmit={handleNewTodoSubmit}>
-        <input type="text" value={newTodoContent} onChange={changeNewTodoContent} />
-        <button type="submit">追加</button>
-      </form>
+      <TodoForm
+        content={newTodoContent}
+        onChangeContent={changeNewTodoContent}
+        onSubmit={handleNewTodoSubmit}
+      />
     </div>
   )
 }
